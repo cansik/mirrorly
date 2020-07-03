@@ -17,11 +17,6 @@ brew install cmake pkg-config wget
 
 # install gstreamer
 echo "installing gstreamer and all plugins..."
-brew install gstreamer gst-plugins-base gst-plugins-bad gst-plugins-good gst-plugins-ugly gst-libav
-brew install libnice
-
-# install libsoup
-echo "installing libsoup..."
-brew install libsoup
+brew install gstreamer gst-plugins-bad
 
 echo "all done!"
