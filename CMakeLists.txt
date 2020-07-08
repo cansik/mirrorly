@@ -12,7 +12,7 @@ find_package(PkgConfig)
 pkg_check_modules(GST REQUIRED gstreamer-1.0)
 
 # GStreamer
-add_executable(mirrorly src/main.cpp)
+add_executable(mirrorly src/main.cpp src/ScreenMirror.cpp src/ScreenMirror.h)
 
 target_link_libraries(mirrorly PRIVATE ${GST_LINK_LIBRARIES})
 target_include_directories(mirrorly PRIVATE ${GST_INCLUDE_DIRS})
