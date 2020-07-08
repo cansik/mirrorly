@@ -5,29 +5,42 @@
 using namespace std;
 
 volatile bool running = true;
+ScreenMirror mirror{};
 
 int main(int argc, char *argv[]) {
     std::cout << "Mirrorly Test" << std::endl;
 
-    std::thread thread_object([]() {
-        ScreenMirror mirror{};
+    mirror.start();
+    mirror.play();
 
-        mirror.start();
-        mirror.play();
+    std::thread thread_object([]() {
+        std::string command;
 
         while (running) {
-            mirror.update();
-        }
+            cout << "Command: ";
+            cin >> command;
 
-        mirror.stop();
+            if(command == "play") {
+                mirror.play();
+            }
+
+            if(command == "pause") {
+                mirror.pause();
+            }
+
+            if(command == "quit") {
+                running = false;
+            }
+        }
     });
 
-    char command[20];
-    cout<<"Command: ";
-    cin>> command;
+    while (running) {
+        mirror.update();
+    }
+
+    mirror.stop();
 
     cout << "Done!" << endl;
-    running = false;
     thread_object.join();
 
     return 0;
