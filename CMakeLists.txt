@@ -29,7 +29,7 @@ add_executable(mirrorly)
 
 # link libs
 target_sources(mirrorly PRIVATE src/main.cpp src/ScreenMirror.cpp src/ScreenMirror.h)
-target_include_directories(mirrorly PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${GST_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/elements/lib/include)
+target_include_directories(mirrorly PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${GST_INCLUDE_DIRS})
 target_link_libraries(mirrorly PRIVATE ${GST_LINK_LIBRARIES} cycfi::elements ${COCOA_LIBRARY})
 target_compile_options(mirrorly PRIVATE ${GST_CFLAGS}
         $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -Wpedantic>
