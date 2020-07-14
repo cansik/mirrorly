@@ -41,13 +41,12 @@ int main(int argc, char *argv[]) {
     std::cout << "Mirrorly Test" << std::endl;
 
     app _app(argc, argv, "Mirrorly", "ch.cansik.mirrorly");
+
     window _win(_app.name());
     _win.on_close = [&_app]() { _app.stop(); };
 
     view view_(_win);
-
     view_.content(
-            label("test"),
             background
     );
 
