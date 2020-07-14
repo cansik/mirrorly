@@ -19,4 +19,12 @@ brew install cmake pkg-config wget
 echo "installing gstreamer and all plugins..."
 brew install gstreamer gst-plugins-bad
 
+# install elemnts dependencies
+echo "installing cairo and fontconfig..."
+brew install cairo
+brew install fontconfig
+
+# download elements
+git clone --recurse-submodules  https://github.com/cycfi/elements.git
+
 echo "all done!"
