@@ -13,7 +13,8 @@ pkg_check_modules(GST REQUIRED gstreamer-1.0)
 
 # add elements
 set(ELEMENTS_BUILD_EXAMPLES OFF)
-add_subdirectory(elements)
+set(ELEMENTS_LIBRARY_ROOT ${PROJECT_SOURCE_DIR}/elements/lib)
+add_subdirectory(${ELEMENTS_LIBRARY_ROOT})
 
 set(ELEMENTS_APP_PROJECT "Mirrorly")
 set(ELEMENTS_APP_TITLE "Mirrorly")
@@ -24,12 +25,19 @@ set(ELEMENTS_APP_VERSION "1.0")
 find_library(COCOA_LIBRARY Cocoa)
 
 # executable
-add_executable(mirrorly src/main.cpp src/ScreenMirror.cpp src/ScreenMirror.h)
+add_executable(mirrorly)
 
 # link libs
-target_link_libraries(mirrorly PRIVATE ${GST_LINK_LIBRARIES} elements ${COCOA_LIBRARY})
-target_include_directories(mirrorly PRIVATE ${GST_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/elements/lib/include)
-target_compile_options(mirrorly PRIVATE ${GST_CFLAGS})
+target_sources(mirrorly PRIVATE src/main.cpp src/ScreenMirror.cpp src/ScreenMirror.h)
+target_include_directories(mirrorly PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${GST_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/elements/lib/include)
+target_link_libraries(mirrorly PRIVATE ${GST_LINK_LIBRARIES} cycfi::elements ${COCOA_LIBRARY})
+target_compile_options(mirrorly PRIVATE ${GST_CFLAGS}
+        $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -Wpedantic>
+        $<$<CXX_COMPILER_ID:Clang>:-Wall -Wpedantic>
+        $<$<CXX_COMPILER_ID:MSVC>:/W4>
+        )
+
+target_compile_features(mirrorly PRIVATE cxx_std_17)
 
 ADD_CUSTOM_TARGET(debug
         COMMAND ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE=Debug ${CMAKE_SOURCE_DIR}

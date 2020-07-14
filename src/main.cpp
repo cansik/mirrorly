@@ -47,6 +47,7 @@ int main(int argc, char *argv[]) {
     view view_(_win);
 
     view_.content(
+            label("test"),
             background
     );
 
