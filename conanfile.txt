@@ -1,0 +1,6 @@
+[requires]
+gstreamer/1.16.0@bincrafters/stable
+cairo/1.17.2@bincrafters/stable
+
+[generators]
+cmake
