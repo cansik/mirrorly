@@ -1,4 +1,4 @@
-# Mirrorly
+# Mirrorly [![Build Status](https://travis-ci.org/cansik/mirrorly.svg?branch=master)](https://travis-ci.org/cansik/mirrorly)
 Mirror your main screen to your second screen for presentations.
 
 ### Build
