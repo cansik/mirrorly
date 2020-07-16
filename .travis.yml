@@ -1,0 +1,12 @@
+os: osx
+
+install:
+  - bash installDepsMacOS.sh
+
+script:
+  - mkdir build && cd build
+  - cmake ..
+  - make release
+
+after_success:
+  - echo "Build Successfull!"

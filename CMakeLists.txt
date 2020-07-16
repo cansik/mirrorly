@@ -12,15 +12,24 @@ find_package(PkgConfig)
 pkg_check_modules(GST REQUIRED gstreamer-1.0)
 
 # add elements
+# set(ELEMENTS_LIBRARY_ROOT ${PROJECT_SOURCE_DIR}/elements/lib)
+# add_subdirectory(${ELEMENTS_LIBRARY_ROOT})
+
+set(ELEMENTS_ROOT ${PROJECT_SOURCE_DIR}/elements)
+get_filename_component(ELEMENTS_ROOT "${ELEMENTS_ROOT}" ABSOLUTE)
+set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${ELEMENTS_ROOT}/cmake")
+
 set(ELEMENTS_BUILD_EXAMPLES OFF)
-set(ELEMENTS_LIBRARY_ROOT ${PROJECT_SOURCE_DIR}/elements/lib)
-add_subdirectory(${ELEMENTS_LIBRARY_ROOT})
+add_subdirectory(${ELEMENTS_ROOT} elements)
+include(ElementsConfigCommon)
 
 set(ELEMENTS_APP_PROJECT "Mirrorly")
 set(ELEMENTS_APP_TITLE "Mirrorly")
 set(ELEMENTS_APP_COPYRIGHT "Copyright (c) 2020 cansik")
 set(ELEMENTS_APP_ID "ch.cansik.mirrorly")
 set(ELEMENTS_APP_VERSION "1.0")
+
+set(ELEMENTS_APP_RESOURCES)
 
 find_library(COCOA_LIBRARY Cocoa)
 
