@@ -15,11 +15,14 @@ fi
 echo "installing cmake and pkg-config..."
 brew install cmake pkg-config wget
 
-# install conan
-brew install conan
-conan profile new default --detect
+# install gstreamer
+echo "installing gstreamer and all plugins..."
+brew install gstreamer gst-plugins-bad
 
-conan install
+# install elemnts dependencies
+echo "installing cairo and fontconfig..."
+brew install cairo
+brew install fontconfig
 
 # download elements
 git clone --recurse-submodules  https://github.com/cycfi/elements.git
