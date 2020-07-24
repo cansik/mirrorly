@@ -8,8 +8,8 @@ echo "downloading gstreamer..."
 wget -nv "https://gstreamer.freedesktop.org/data/pkg/windows/1.16.2/gstreamer-1.0-msvc-x86_64-1.16.2.msi" -O "gstreamer.msi"
 
 echo "installing gstreamer..."
-set GST_INSTALL_DIR="C:\gstreamer"
-set GST_ROOT="%GST_INSTALL_DIR%\1.0\x86_64"
+set GST_INSTALL_DIR=C:\gstreamer
+set GST_ROOT=%GST_INSTALL_DIR%\1.0\x86_64
 
 echo "gstreamer dir:"
 dir "%GST_INSTALL_DIR%
