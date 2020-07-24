@@ -20,7 +20,7 @@ echo "Gstreamer Root: %GST_ROOT%"
 msiexec /passive INSTALLDIR="%GST_INSTALL_DIR%" /i gstreamer.msi /L*V! "gstreamer.log"
 
 echo "install log:"
-type gstreamer.log
+:: type gstreamer.log
 
 for /f "usebackq tokens=2,*" %A in (`reg query HKCU\Environment /v PATH`) do set my_user_path=%B
 setx PATH "%PATH%;%GST_ROOT%\bin;%my_user_path%"
