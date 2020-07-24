@@ -34,10 +34,15 @@ set(ELEMENTS_APP_RESOURCES)
 # executable
 add_executable(mirrorly)
 
+# add cocoa if on macos
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    set(OS_FRAMEWORK "-framework Cocoa")
+endif()
+
 # link libs
 target_sources(mirrorly PRIVATE src/main.cpp src/ScreenMirror.cpp src/ScreenMirror.h)
 target_include_directories(mirrorly PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${GST_INCLUDE_DIRS})
-target_link_libraries(mirrorly PRIVATE ${GST_LINK_LIBRARIES} cycfi::elements "-framework Cocoa")
+target_link_libraries(mirrorly PRIVATE ${GST_LINK_LIBRARIES} cycfi::elements ${OS_FRAMEWORK})
 target_compile_options(mirrorly PRIVATE ${GST_CFLAGS}
         $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -Wpedantic>
         $<$<CXX_COMPILER_ID:Clang>:-Wall -Wpedantic>

@@ -3,4 +3,4 @@
 echo "building..."
 mkdir build && cd build
 cmake ..
-make release
+make
