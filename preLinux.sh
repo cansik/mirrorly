@@ -20,4 +20,7 @@ echo "installing gstreamer and all plugins..."
 sudo apt -y install libgstreamer1.0-dev libgstreamer-plugins-bad1.0-dev
 sudo apt -y install libnice-dev
 
+# download elements
+git clone --recurse-submodules  https://github.com/cycfi/elements.git
+
 echo "all done!"
