@@ -13,6 +13,7 @@ notifications:
 install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then bash preLinux.sh; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then bash preMacOS.sh; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then cmd.exe "/q /c C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then cmd.exe "/q /c preWindows.bat"; fi
 
 script:

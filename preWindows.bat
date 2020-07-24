@@ -32,7 +32,4 @@ echo "Path: %PATH%"
 echo "installing elements..."
 git clone --recurse-submodules  https://github.com/cycfi/elements.git
 
-echo "loading vsdevcmd..."
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"
-
 echo "all done!"
