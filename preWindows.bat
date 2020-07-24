@@ -1,21 +1,27 @@
 echo "installing all dependencies for mirrorly, this can take a while!"
 
-REM install wget and pkconfig
-choco install wget
-choco install pkgconfiglite
-choco install microsoft-build-tools
+:: install wget and pkconfig
+choco install wget microsoft-build-tools pkgconfiglite
 
-REM install gstreamer
+:: install gstreamer
+echo "downloading gstreamer..."
 wget -nv "https://gstreamer.freedesktop.org/data/pkg/windows/1.16.2/gstreamer-1.0-msvc-x86_64-1.16.2.msi" -O "gstreamer.msi"
-msiexec /passive INSTALLDIR=gstreamer /i gstreamer.msi /L*V! "gstreamer.log"
+
+echo "installing gstreamer..."
+msiexec /passive INSTALLDIR="C:/gstreamer" /i gstreamer.msi /L*V! "gstreamer.log"
 
 echo "install log:"
 type gstreamer.log
 
-REM needs chcholately installed
-refreshenv
+echo "gstreamer dir:"
+dir C:/gstreamer
 
-REM download elements
+echo "setting path dir..."
+echo "Gstreamer Root: %GSTREAMER_ROOT_X86%"
+setx GSTREAMER_ROOT_X86 "C:/gstreamer" /m
+
+:: download elements
+echo "installing elements..."
 git clone --recurse-submodules  https://github.com/cycfi/elements.git
 
 echo "all done!"
