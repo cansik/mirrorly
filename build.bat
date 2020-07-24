@@ -21,9 +21,7 @@ cmake -G "Visual Studio 15 2017" ..
 
 dir
 
-echo "loading vsdevcmd..."
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"
+:: echo "loading vsdevcmd..."
 
 echo "running build..."
-msbuild
 msbuild mirrorly.sln
