@@ -8,25 +8,20 @@ echo "downloading gstreamer..."
 wget -nv "https://gstreamer.freedesktop.org/data/pkg/windows/1.16.2/gstreamer-1.0-msvc-x86_64-1.16.2.msi" -O "gstreamer.msi"
 
 echo "installing gstreamer..."
-msiexec /passive INSTALLDIR="C:\gstreamer" /i gstreamer.msi /L*V! "gstreamer.log"
+set GST_INSTALL_DIR="C:\gstreamer"
+set GST_ROOT="%GST_INSTALL_DIR%\1.0\x86_64"
+msiexec /passive INSTALLDIR="%GST_INSTALL_DIR%" /i gstreamer.msi /L*V! "gstreamer.log"
 
 echo "install log:"
-type gstreamer.log
+:: type gstreamer.log
 
 echo "gstreamer dir:"
-dir C:\gstreamer
-
-echo "c:"
-dir C:\
+dir "%GST_INSTALL_DIR%
 
 echo "setting path dir..."
-echo "Gstreamer Root: %GSTREAMER_ROOT_X86%"
+echo "Gstreamer Root: %GST_ROOT%"
 
-setx GSTREAMER_ROOT_X86 "C:\gstreamer" /m
-setx PATH "%PATH%;%GSTREAMER_ROOT_X86%\bin" /m
-
-echo "Gstreamer Root: %GSTREAMER_ROOT_X86%"
-echo "Gstreamer Bin: %GSTREAMER_ROOT_X86%\bin"
+setx PATH "%PATH%;%GST_ROOT%\bin" /m
 
 :: download elements
 echo "installing elements..."
