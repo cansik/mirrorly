@@ -22,11 +22,9 @@ msiexec /passive INSTALLDIR="%GST_INSTALL_DIR%" /i gstreamer.msi /L*V! "gstreame
 echo "install log:"
 :: type gstreamer.log
 
-for /f "usebackq tokens=2,*" %A in (`reg query HKCU\Environment /v PATH`) do set my_user_path=%B
-setx PATH "%PATH%;%GST_ROOT%\bin;%my_user_path%"
-
-:: setx PATH "%PATH%;%GST_ROOT%\bin" /m
-
+setx PATH "%GST_ROOT%\bin;%PATH%" /m
+echo "Path: %PATH%"
+refreshenv
 echo "Path: %PATH%"
 
 :: download elements
