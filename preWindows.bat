@@ -12,7 +12,7 @@ set GST_INSTALL_DIR=C:\gstreamer
 set GST_ROOT=%GST_INSTALL_DIR%\1.0\x86_64
 
 echo "gstreamer dir:"
-dir "%GST_INSTALL_DIR%
+dir %GST_INSTALL_DIR%
 
 echo "setting path dir..."
 echo "Gstreamer Root: %GST_ROOT%"
@@ -23,8 +23,7 @@ echo "install log:"
 :: type gstreamer.log
 
 setx PATH "%GST_ROOT%\bin;%PATH%" /m
-echo "Path: %PATH%"
-refreshenv
+set "PATH=%GST_ROOT%\bin;%PATH%"
 echo "Path: %PATH%"
 
 :: download elements
