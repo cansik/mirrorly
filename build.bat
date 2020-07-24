@@ -1,5 +1,7 @@
 :: needs chcholately installed
-refreshenv
+:: refreshenv
+
+echo %PATH%
 
 echo "Gstreamer Root: %GSTREAMER_ROOT_X86%"
 

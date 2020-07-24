@@ -19,6 +19,7 @@ dir C:/gstreamer
 echo "setting path dir..."
 echo "Gstreamer Root: %GSTREAMER_ROOT_X86%"
 setx GSTREAMER_ROOT_X86 "C:/gstreamer" /m
+echo "Gstreamer Root: %GSTREAMER_ROOT_X86%"
 
 :: download elements
 echo "installing elements..."
