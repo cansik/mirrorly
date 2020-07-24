@@ -1,9 +1,11 @@
 language: cpp
 
-os:
-  - osx
-  - linux
-  - windows
+jobs:
+  include:
+    - os: osx
+    - os: linux
+      dist: bionic
+    # - os: windows
 
 notifications:
   email: false
