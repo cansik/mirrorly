@@ -5,7 +5,7 @@ choco install wget microsoft-build-tools pkgconfiglite
 
 :: install gstreamer
 echo "downloading gstreamer..."
-wget -nv "https://gstreamer.freedesktop.org/data/pkg/windows/1.16.2/gstreamer-1.0-msvc-x86_64-1.16.2.msi" -O "gstreamer.msi"
+wget -nv "https://gstreamer.freedesktop.org/data/pkg/windows/1.16.2/gstreamer-1.0-devel-msvc-x86_64-1.16.2.msi" -O "gstreamer.msi"
 
 echo "installing gstreamer..."
 set GST_INSTALL_DIR=C:\gstreamer
@@ -25,6 +25,8 @@ echo "install log:"
 setx PATH "%GST_ROOT%\bin;%PATH%" /m
 set "PATH=%GST_ROOT%\bin;%PATH%"
 echo "Path: %PATH%"
+
+:: refreshenv
 
 :: download elements
 echo "installing elements..."
