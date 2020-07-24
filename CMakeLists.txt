@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.10)
 project(mirrorly)
 
 set(CMAKE_CXX_STANDARD 17)
-
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
 # Required for GStreamer
@@ -30,6 +29,9 @@ set(ELEMENTS_APP_ID "ch.cansik.mirrorly")
 set(ELEMENTS_APP_VERSION "1.0")
 
 set(ELEMENTS_APP_RESOURCES)
+
+# reset project name because of elements
+project(mirrorly)
 
 # executable
 add_executable(mirrorly)

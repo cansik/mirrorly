@@ -21,4 +21,4 @@ cmake -G "Visual Studio 15 2017" ..
 
 dir
 
-:: msbuild
+msbuild elements.sln
