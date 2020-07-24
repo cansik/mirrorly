@@ -1,5 +1,5 @@
 echo "building..."
 mkdir build
 cd build
-cmake -G"NMake Makefiles" ..//
-namke
+cmake -G"NMake Makefiles" ..
+nmake
