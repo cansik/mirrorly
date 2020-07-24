@@ -10,11 +10,9 @@ echo "building..."
 mkdir build
 cd build
 
-
-
 echo "generating visual studio build..."
 cmake -G "Visual Studio 15 2017" ..
 
 dir
 
-msbuild
+:: msbuild
