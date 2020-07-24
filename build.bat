@@ -19,6 +19,16 @@ cd build
 echo "generating visual studio build..."
 cmake -G "Visual Studio 15 2017" ..
 
+echo C:\ProgramData\chocolatey\lib\:
+dir C:\ProgramData\chocolatey\lib\
+
+echo "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\"
+dir "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\"
+
+echo "C:\Program Files\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\"
+dir "C:\Program Files\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\"
+
 dir
 
-msbuild elements.sln
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"
+msbuild mirrorly.sln
