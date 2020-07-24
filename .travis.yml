@@ -1,15 +1,22 @@
-os: osx
+language: cpp
+
+os:
+  - osx
+  - linux
+  - windows
 
 notifications:
   email: false
 
 install:
-  - bash installDepsMacOS.sh
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then bash preLinux.sh; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then bash preMacOS.sh; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then preWindows.bat; fi
 
 script:
-  - mkdir build && cd build
-  - cmake ..
-  - make release
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then bash build.sh; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then bash build.sh; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then build.bat; fi
 
 after_success:
   - echo "Build Successfull!"

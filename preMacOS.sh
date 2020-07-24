@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 echo "installing all dependencies for mirrorly, this can take a while!"
 
