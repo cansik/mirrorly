@@ -4,16 +4,17 @@ Mirror your main screen to your second screen for presentations.
 ### Build
 
 ```
-# install all dependencies (mainly gstreamer-1.0)
-./installDepsMacOS.sh
+# macOS
+./preMacOS.sh
+./build.sh
 
-# build
-mkdir build && cd build
-cmake ..
-make release
+# linux
+./preLinux.sh
+./build.sh
 
-# run
-./mirrorly
+# windows
+preWindows.bat
+build.bat
 ```
 
 ### Help
