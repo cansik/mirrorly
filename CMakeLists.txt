@@ -43,7 +43,7 @@ endif()
 
 # add scorelib.h
 if (WIN32)
-    target_link_libraries(elements PUBLIC Shcore)
+    set(OS_FRAMEWORK shcore.lib)
 endif()
 
 # link libs
