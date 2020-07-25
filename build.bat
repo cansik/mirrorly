@@ -17,13 +17,13 @@ mkdir build
 cd build
 
 echo "generating visual studio build..."
-cmake -G "Visual Studio 15 2017" ..
+:: cmake -G "Visual Studio 15 2017" ..
+cmake -G "Visual Studio 16 2019" ..
 
 dir
 
-echo "loading vsdevcmd..."
-type "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" & msbuild mirrorly.sln
+echo "running vsdevcmd build..."
+set "Vs_17_DevCmd=C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"
+set "Vs_19_DevCmd=C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\VsDevCmd.bat"
 
-echo "running build..."
-msbuild mirrorly.sln
+"%Vs_19_DevCmd%" & msbuild mirrorly.sln
