@@ -1,9 +1,3 @@
-:: needs chcholately installed
-:: refreshenv
-
-
-:: gstlib: C:\gstreamer\1.0\x86_64\lib\gstreamer-1.0\
-
 set "GSTREAMER_1_0_ROOT_X86_64=C:\gstreamer\1.0\x86_64"
 set "PKG_CONFIG_PATH=%GSTREAMER_1_0_ROOT_X86_64%\lib\pkgconfig"
 set "PATH=%GSTREAMER_1_0_ROOT_X86_64%\bin;%PATH%"
