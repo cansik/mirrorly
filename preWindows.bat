@@ -1,7 +1,8 @@
 echo "installing all dependencies for mirrorly, this can take a while!"
 
 :: install wget and pkconfig
-choco install wget visualstudio2019buildtools pkgconfiglite
+choco install wget pkgconfiglite
+choco install visualstudio2019buildtools visualstudio2019-workload-nativedesktop
 
 :: install gstreamer
 echo "downloading gstreamer..."
