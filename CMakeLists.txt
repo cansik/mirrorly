@@ -41,6 +41,11 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(OS_FRAMEWORK "-framework Cocoa")
 endif()
 
+# add scorelib.h
+if (WIN32)
+    target_link_libraries(elements PUBLIC Shcore)
+endif()
+
 # link libs
 target_sources(mirrorly PRIVATE src/main.cpp src/ScreenMirror.cpp src/ScreenMirror.h)
 target_include_directories(mirrorly PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${GST_INCLUDE_DIRS})
