@@ -22,6 +22,9 @@ cmake -G "Visual Studio 16 2019" ..
 
 dir
 
+echo cmake error:
+type CMakeFiles/CMakeOutput.log
+
 echo "running vsdevcmd build..."
 set "Vs_17_DevCmd=C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"
 set "Vs_19_DevCmd=C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\VsDevCmd.bat"
