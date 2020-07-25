@@ -8,6 +8,8 @@ set "GSTREAMER_1_0_ROOT_X86_64=C:\gstreamer\1.0\x86_64"
 set "PKG_CONFIG_PATH=%GSTREAMER_1_0_ROOT_X86_64%\lib\pkgconfig"
 set "PATH=%GSTREAMER_1_0_ROOT_X86_64%\bin;%PATH%"
 
+set "VS160COMNTOOLS=C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
+
 echo %PATH%
 echo %GSTREAMER_1_0_ROOT_X86_64%
 echo %PKG_CONFIG_PATH%
@@ -27,6 +29,6 @@ type CMakeFiles/CMakeOutput.log
 
 echo "running vsdevcmd build..."
 set "Vs_17_DevCmd=C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"
-set "Vs_19_DevCmd=C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\VsDevCmd.bat"
+set "Vs_19_DevCmd=%VS160COMNTOOLS%\VsDevCmd.bat"
 
 "%Vs_19_DevCmd%" & msbuild mirrorly.sln
