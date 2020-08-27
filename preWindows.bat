@@ -30,5 +30,8 @@ echo "Path: %PATH%"
 :: download elements
 echo "installing elements..."
 git clone --recurse-submodules  https://github.com/cycfi/elements.git
+cd elements
+git checkout develop
+cd ..
 
 echo "all done!"

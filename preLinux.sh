@@ -22,5 +22,8 @@ sudo apt -y install libnice-dev
 
 # download elements
 git clone --recurse-submodules  https://github.com/cycfi/elements.git
+cd elements
+git checkout develop
+cd ..
 
 echo "all done!"

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(mirrorly)
+project(mirrorly LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
@@ -10,25 +10,29 @@ find_package(PkgConfig)
 # Look for GStreamer installation
 pkg_check_modules(GST REQUIRED gstreamer-1.0)
 
-# add elements
-# set(ELEMENTS_LIBRARY_ROOT ${PROJECT_SOURCE_DIR}/elements/lib)
-# add_subdirectory(${ELEMENTS_LIBRARY_ROOT})
-
+# elements
 set(ELEMENTS_ROOT ${PROJECT_SOURCE_DIR}/elements)
 get_filename_component(ELEMENTS_ROOT "${ELEMENTS_ROOT}" ABSOLUTE)
 set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${ELEMENTS_ROOT}/cmake")
 
 set(ELEMENTS_BUILD_EXAMPLES OFF)
-add_subdirectory(${ELEMENTS_ROOT} elements)
-include(ElementsConfigCommon)
 
-set(ELEMENTS_APP_PROJECT "Mirrorly")
-set(ELEMENTS_APP_TITLE "Mirrorly")
+# If we are building outside the project, you need to set ELEMENTS_ROOT:
+if (NOT ELEMENTS_BUILD_EXAMPLES)
+    include(ElementsConfigCommon)
+    set(ELEMENTS_BUILD_EXAMPLES OFF)
+    add_subdirectory(${ELEMENTS_ROOT} elements)
+endif()
+
+set(ELEMENTS_APP_PROJECT "Elements_Example")
+set(ELEMENTS_APP_TITLE "Elements Example")
 set(ELEMENTS_APP_COPYRIGHT "Copyright (c) 2020 cansik")
-set(ELEMENTS_APP_ID "ch.cansik.mirrorly")
+set(ELEMENTS_APP_ID "ch.cansik.example")
 set(ELEMENTS_APP_VERSION "1.0")
 
 set(ELEMENTS_APP_RESOURCES)
+
+include(ElementsConfigApp)
 
 # reset project name because of elements
 project(mirrorly)
