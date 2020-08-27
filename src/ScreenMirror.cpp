@@ -68,6 +68,7 @@ void ScreenMirror::play() {
         return;
     }
     std::cout << "==>Set video to play." << std::endl;
+    playing = true;
 }
 
 void ScreenMirror::pause() {
@@ -79,4 +80,9 @@ void ScreenMirror::pause() {
         return;
     }
     std::cout << "==>Set video to pause." << std::endl;
+    playing = false;
+}
+
+bool ScreenMirror::isPlaying() {
+    return playing;
 }

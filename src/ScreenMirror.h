@@ -18,6 +18,8 @@ private:
     GstStateChangeReturn ret;
     GMainContext* context;
 
+    bool playing = false;
+
 public:
     void start();
 
@@ -28,6 +30,8 @@ public:
     void play();
 
     void pause();
+
+    bool isPlaying();
 };
 
 
