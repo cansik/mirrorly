@@ -1,7 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <elements.hpp>
-#include "ScreenMirror.h"
+#include "src/ScreenMirror.h"
 
 using namespace std;
 using namespace cycfi::elements;
@@ -46,7 +46,11 @@ int main(int argc, char *argv[]) {
     _win.on_close = [&_app]() { _app.stop(); };
 
     view view_(_win);
+
+    auto button = make_button();
+
     view_.content(
+            button,
             background
     );
 

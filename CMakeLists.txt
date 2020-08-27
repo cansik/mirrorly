@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.10)
 project(mirrorly LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
 # Required for GStreamer
 find_package(PkgConfig)
@@ -24,43 +23,19 @@ if (NOT ELEMENTS_BUILD_EXAMPLES)
     add_subdirectory(${ELEMENTS_ROOT} elements)
 endif()
 
-set(ELEMENTS_APP_PROJECT "Elements_Example")
+set(ELEMENTS_APP_PROJECT "mirrorly")
 set(ELEMENTS_APP_TITLE "Elements Example")
 set(ELEMENTS_APP_COPYRIGHT "Copyright (c) 2020 cansik")
 set(ELEMENTS_APP_ID "ch.cansik.example")
 set(ELEMENTS_APP_VERSION "1.0")
 
 set(ELEMENTS_APP_RESOURCES)
-
 include(ElementsConfigApp)
 
-# reset project name because of elements
-project(mirrorly)
-
-# executable
-add_executable(mirrorly)
-
-# add cocoa if on macos
-if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    set(OS_FRAMEWORK "-framework Cocoa")
-endif()
-
-# add scorelib.h
-if (WIN32)
-    set(OS_FRAMEWORK shcore.lib)
-endif()
-
 # link libs
-target_sources(mirrorly PRIVATE src/main.cpp src/ScreenMirror.cpp src/ScreenMirror.h)
+target_sources(mirrorly PRIVATE src/ScreenMirror.cpp src/ScreenMirror.h)
 target_include_directories(mirrorly PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${GST_INCLUDE_DIRS})
 target_link_libraries(mirrorly PRIVATE ${GST_LINK_LIBRARIES} cycfi::elements ${OS_FRAMEWORK})
-target_compile_options(mirrorly PRIVATE ${GST_CFLAGS}
-        $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -Wpedantic>
-        $<$<CXX_COMPILER_ID:Clang>:-Wall -Wpedantic>
-        $<$<CXX_COMPILER_ID:MSVC>:/W4>
-        )
-
-target_compile_features(mirrorly PRIVATE cxx_std_17)
 
 ADD_CUSTOM_TARGET(debug
         COMMAND ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE=Debug ${CMAKE_SOURCE_DIR}
