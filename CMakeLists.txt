@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.10)
 project(mirrorly LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
-SET(GCC_COVERAGE_COMPILE_FLAGS "-Wunused-parameter")
 
 # Required for GStreamer
 find_package(PkgConfig)
@@ -37,9 +36,6 @@ include(ElementsConfigApp)
 target_sources(mirrorly PRIVATE src/ScreenMirror.cpp src/ScreenMirror.h)
 target_include_directories(mirrorly PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${GST_INCLUDE_DIRS})
 target_link_libraries(mirrorly PRIVATE ${GST_LINK_LIBRARIES} cycfi::elements ${OS_FRAMEWORK})
-
-# gcc defs
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 
 ADD_CUSTOM_TARGET(debug
         COMMAND ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE=Debug ${CMAKE_SOURCE_DIR}
