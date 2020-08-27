@@ -3,12 +3,18 @@
 echo "installing all dependencies for mirrorly, this can take a while!"
 
 # updating / installing brew
-which -s brew
-if [[ $? != 0 ]] ; then
-    # Install Homebrew
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if test -z "$TRAVIS"
+then
+  echo "\$TRAVIS is empty - not running on travis"
+  which -s brew
+  if [[ $? != 0 ]] ; then
+      # Install Homebrew
+      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  else
+      brew update
+  fi
 else
-    brew update
+  echo "\$TRAVIS is NOT empty - running on travis"
 fi
 
 # install cmake and pkg-config

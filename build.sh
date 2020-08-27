@@ -3,4 +3,4 @@
 echo "building..."
 mkdir build && cd build
 cmake ..
-make
+make ALLOW_WARNINGS=1
