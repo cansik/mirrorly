@@ -15,6 +15,7 @@ then
   fi
 else
   echo "\$TRAVIS is NOT empty - running on travis"
+  export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
 # install cmake and pkg-config
